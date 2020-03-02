@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FIRLDER'S CHOICE</title>
+    <link rel="stylesheet" type="text/css" href="./css/navi.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .textContent{
+            width: 80vw;
+            height: 200px;
+            margin: 30px auto;
+            border: 2px solid navy;
+            position: relative;
+            z-index: -1;
+            box-shadow: 3px 3px 3px gray;
+        }
+        .messagePage {
+            width: 80vw;
+            height: 200vh;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        textarea {
+            margin: 0 auto;
+            width: 80vw;
+            height: 200px;
+            font-size: 14px;
+        }
+        button {
+            font-size: 16px;
+            padding: 5px;
+        }
+        .avatorIcon {
+            border-radius: 50%;
+            width: 10vw;
+            position: absolute;
+            left: 5vw;
+            top: 3vh;
+        }
+        .userNameText {
+            position: absolute;
+            width: 10vw;
+            left: 5vw;
+            bottom: 1vh;
+            text-align: center;
+        }
+        .messageText {
+            position: absolute;
+            width: 60vw;
+            height: 200px;
+            left: 20vw;
+            top: 0;
+            box-sizing: border-box;
+            padding: 10px;
+            border-left: 1px solid navy;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+            <ul>
+                <li><a href="./index.html">店の情報</a></li>
+                <li><a href="./menu.html">メニュー</a></li>
+                <li><a href="./address.html">店の案内</a></li>
+                <li><a href="./contact.html">連絡先</a></li>
+                <li><a href="./message.html">評価</a></li>
+            </ul>
+    </div>
+
+    <div class="messagePage">
+        <h3>今回の体験はどうですか？</h3>
+        <textarea placeholder="ここに書く！" maxlength="300"></textarea>
+        <button onclick="subFrom()">送り</button>
+    </div>
+        
+    <script>
+       
+        var texts = document.getElementsByClassName("messagePage")[0];
+        var count = 0;
+
+        function subFrom() {
+
+            var messageTxt= document.getElementsByTagName("textarea")[0];
+            var messageStr = messageTxt.value;
+            messageTxt.value = "";
+            var imgUrl = "./images/headIcon0"+(count%4+1)+".png";
+            count++;
+            if (messageStr&&messageStr.length <= 300) {
+
+                 var userImg = document.createElement("img");
+                 userImg.setAttribute("src",imgUrl);
+                 userImg.className = "avatorIcon";
+                 
+                 var userName = document.createElement("p");
+                 userName.className = "userNameText";
+                 userName.innerText = "user"+ count;
+                 
+                 var userMessage = document.createElement("div");
+                 userMessage.className = "messageText";
+                 userMessage.innerText = messageStr;
+                 userMessage.setAttribute("overflow","scroll");
+                 
+                 var textC = document.createElement("div");
+                 textC.className = "textContent";
+                 textC.appendChild(userImg);
+                 textC.appendChild(userName);
+                 textC.appendChild(userMessage);
+
+                 texts.appendChild(textC);
+            }else if(messageStr.length > 300){
+                alert("150文字以内を入力してください");
+            }else{
+                alert("聞きたい内容を入力してください");
+            }
+        }
+
+    </script>
+    <script src="./js/navi.js" type="text/javascript"></script>
+</body>
+</html>
