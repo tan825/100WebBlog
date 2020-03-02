@@ -49,7 +49,7 @@ a {
     position: absolute;
     left: 0;
     top: 0;
-    transition: 3s;
+    transition: 1s;
     background-size: cover;
     background-position: center center;
 }
