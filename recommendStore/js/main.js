@@ -32,10 +32,10 @@ function roll() {
         current = 0;
         move(current);
     }
-    setTimeout(roll,3000);
+    setTimeout(roll,5000);
 }
 
-setTimeout(roll,3000);
+setTimeout(roll,5000);
 
 // introPage
 var introObj = document.getElementsByClassName("introPage")[0].getElementsByTagName("div");
